@@ -15,9 +15,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
+      <body className="relative antialiased overflow-x-hidden overflow-y-auto max-w-full bg-gradient-to-bl from-orange-600 to-orange-900">
         <Navbar />
-        <main>{children}</main>
+        <main className="w-full max-w-full">{children}</main>
         <footer>Footer</footer>
       </body>
     </html>
