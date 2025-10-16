@@ -3,6 +3,7 @@ import Link from "next/link";
 import "@/app/globals.css";
 
 import Navbar from "@/components/ui/Navbar";
+import ScrollToTop from "@/components/ui/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -24,11 +25,11 @@ export default function RootLayout({
             <p>© CITRUS ARC STUDIO</p>
             <p>202503267271 (003780123-A)</p>
           </div>
-          <Link href="/" className="order-1 sm:order-2">
+          <ScrollToTop href="/" className="order-1 sm:order-2">
             <h2 className="text-6xl sm:text-[180px] font-bold leading-none translate-y-[-18px]">
               CITRUS ARC STUDIO
             </h2>
-          </Link>
+          </ScrollToTop>
         </footer>
       </body>
     </html>
