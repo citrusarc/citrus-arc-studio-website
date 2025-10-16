@@ -19,12 +19,12 @@ export default function RootLayout({
       <body className="relative antialiased overflow-x-hidden overflow-y-auto max-w-full bg-gradient-to-bl from-orange-600 to-orange-900">
         <Navbar />
         <main className="w-full max-w-full">{children}</main>
-        <footer className="flex flex-col w-full items-center justify-center text-center text-orange-600">
-          <div className="hidden sm:flex px-10 w-full items-center justify-between text-white">
+        <footer className="flex flex-col py-8 sm:py-0 w-full items-center justify-center text-center text-orange-600">
+          <div className="flex flex-col sm:flex-row sm:px-10 w-full items-center justify-between order-2 sm:order-1 text-white/50">
             <p>© CITRUS ARC STUDIO</p>
             <p>202503267271 (003780123-A)</p>
           </div>
-          <Link href="/">
+          <Link href="/" className="order-1 sm:order-2">
             <h2 className="text-6xl sm:text-[180px] font-bold leading-none translate-y-[-18px]">
               CITRUS ARC STUDIO
             </h2>
