@@ -28,8 +28,8 @@ export default function HeroSection() {
             <Image fill src="/Images/dummy-image.jpg" alt="Overview Banner" />
           </div>
           <p>
-            Might be a short descriptions here. I mean not neccessary but it's
-            cool.
+            Might be a short descriptions here. I mean not neccessary but
+            it&apos;s cool.
           </p>
           <Link href="/" className="w-full">
             <button className="p-4 w-full rounded-2xl cursor-pointer text-white bg-orange-600 hover:bg-orange-800">
