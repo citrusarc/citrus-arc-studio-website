@@ -1,6 +1,10 @@
-import { Merriweather } from "next/font/google";
-import { Spectral } from "next/font/google";
-import { Lora } from "next/font/google";
+import {
+  Merriweather,
+  Spectral,
+  Schoolbell,
+  Oi,
+  Modak,
+} from "next/font/google";
 
 export const merriweather = Merriweather({
   weight: ["300", "400", "500", "600", "700"],
@@ -16,8 +20,22 @@ export const spectral = Spectral({
   display: "swap",
 });
 
-export const lora = Lora({
-  weight: ["400", "500", "600", "700"],
+export const schoolBell = Schoolbell({
+  weight: ["400"],
+  subsets: ["latin"],
+  style: ["normal"],
+  display: "swap",
+});
+
+export const oi = Oi({
+  weight: ["400"],
+  subsets: ["latin"],
+  style: ["normal"],
+  display: "swap",
+});
+
+export const modak = Modak({
+  weight: ["400"],
   subsets: ["latin"],
   style: ["normal"],
   display: "swap",

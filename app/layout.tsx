@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import "@/app/globals.css";
 
 import Navbar from "@/components/ui/Navbar";
@@ -18,7 +19,13 @@ export default function RootLayout({
       <body className="relative antialiased overflow-x-hidden overflow-y-auto max-w-full bg-gradient-to-bl from-orange-600 to-orange-900">
         <Navbar />
         <main className="w-full max-w-full">{children}</main>
-        <footer>Footer</footer>
+        <footer className="flex flex-col py-2 items-center justify-center text-center text-orange-600">
+          <Link href="/">
+            <h2 className="text-4xl sm:text-[180px] font-bold">
+              CITRUS ARC STUDIO
+            </h2>
+          </Link>
+        </footer>
       </body>
     </html>
   );
