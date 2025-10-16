@@ -4,6 +4,7 @@ import {
   Schoolbell,
   Oi,
   Modak,
+  Lexend_Exa,
 } from "next/font/google";
 
 export const merriweather = Merriweather({
@@ -36,6 +37,13 @@ export const oi = Oi({
 
 export const modak = Modak({
   weight: ["400"],
+  subsets: ["latin"],
+  style: ["normal"],
+  display: "swap",
+});
+
+export const lexendExa = Lexend_Exa({
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
   subsets: ["latin"],
   style: ["normal"],
   display: "swap",

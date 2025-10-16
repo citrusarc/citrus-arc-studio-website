@@ -5,7 +5,9 @@ export default function OverviewSection() {
         <h2 className="text-6xl sm:text-[180px] font-bold">
           THIS WILL BE THE BIG TITLE
         </h2>
-        <p>This will be the small descriptions.</p>
+        <div>
+          <p>This will be the small description.</p>
+        </div>
       </div>
     </section>
   );

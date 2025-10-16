@@ -24,7 +24,7 @@ export default function HeroSection() {
         </div>
         <div className="relative z-10 w-full sm:w-auto">
           <Link href="/" className="w-full sm:w-fit">
-            <button className="p-4 w-full sm:w-fit rounded-2xl cursor-pointer text-white bg-orange-600">
+            <button className="p-4 w-full sm:w-fit rounded-2xl cursor-pointer text-white bg-orange-600 hover:bg-orange-800">
               SEE THE WORK
             </button>
           </Link>
