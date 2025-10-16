@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 
 import { schoolBell } from "@/config/font";
 
@@ -22,9 +23,16 @@ export default function HeroSection() {
             Let it inspire. Make it happen.
           </p>
         </div>
-        <div className="relative z-10 w-full sm:w-auto">
-          <Link href="/" className="w-full sm:w-fit">
-            <button className="p-4 w-full sm:w-fit rounded-2xl cursor-pointer text-white bg-orange-600 hover:bg-orange-800">
+        <div className="relative z-10 flex flex-col gap-4 w-full sm:w-auto max-w-sm">
+          <div className="relative w-full sm:w-96 aspect-square">
+            <Image fill src="/Images/dummy-image.jpg" alt="Overview Banner" />
+          </div>
+          <p>
+            Might be a short descriptions here. I mean not neccessary but it's
+            cool.
+          </p>
+          <Link href="/" className="w-full">
+            <button className="p-4 w-full rounded-2xl cursor-pointer text-white bg-orange-600 hover:bg-orange-800">
               SEE THE WORK
             </button>
           </Link>
