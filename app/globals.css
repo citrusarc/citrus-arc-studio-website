@@ -120,3 +120,55 @@
     @apply bg-background text-foreground;
   }
 }
+
+.animate-on-hover {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transform-origin: center;
+}
+
+button:hover .animate-on-hover {
+  animation: moveUpAndBack 0.2s ease-in-out;
+}
+
+button:not(:hover) .animate-on-hover {
+  animation: moveDownAndBack 0.2s ease-in-out;
+}
+
+@keyframes moveUpAndBack {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  51% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes moveDownAndBack {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  51% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
