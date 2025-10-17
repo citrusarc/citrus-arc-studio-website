@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { FireFlame } from "iconoir-react";
+import { FireFlame, EditPencil } from "iconoir-react";
 
 export default function HeroSection() {
   return (
@@ -21,8 +21,11 @@ export default function HeroSection() {
           <div className="relative w-full sm:w-[560px] aspect-square rounded-2xl overflow-hidden">
             <Image fill src="/Images/dummy-image.jpg" alt="Overview Banner" />
             <Link href="/" className="absolute bottom-0 p-4 w-full">
-              <button className="p-4 w-full rounded-full cursor-pointer text-white bg-orange-600 hover:bg-orange-800">
-                GET IN TOUCH
+              <button className="flex p-2 w-full items-center justify-between rounded-full cursor-pointer font-semibold text-white bg-orange-600 hover:bg-orange-800">
+                <span className="mx-auto">GET IN TOUCH</span>
+                <div className="p-2 rounded-full text-orange-600 bg-white">
+                  <EditPencil className="w-6 sm:w-8 h-6 sm:h-8" />
+                </div>
               </button>
             </Link>
           </div>
