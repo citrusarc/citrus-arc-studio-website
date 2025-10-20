@@ -121,17 +121,17 @@
   }
 }
 
-.animate-on-hover {
+.up-down-on-hover {
   display: inline-block;
   transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
   transform-origin: center;
 }
 
-button:hover .animate-on-hover {
+button:hover .up-down-on-hover {
   animation: moveUpAndBack 0.2s ease-in-out;
 }
 
-button:not(:hover) .animate-on-hover {
+button:not(:hover) .up-down-on-hover {
   animation: moveDownAndBack 0.2s ease-in-out;
 }
 
@@ -169,6 +169,58 @@ button:not(:hover) .animate-on-hover {
   }
   100% {
     transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.right-left-on-hover {
+  display: inline-block;
+  transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+  transform-origin: center;
+}
+
+button:hover .right-left-on-hover {
+  animation: moveRightAndBack 0.2s ease-in-out;
+}
+
+button:not(:hover) .right-left-on-hover {
+  animation: moveLeftAndBack 0.2s ease-in-out;
+}
+
+@keyframes moveLeftAndBack {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  51% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes moveRightAndBack {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  51% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
     opacity: 1;
   }
 }

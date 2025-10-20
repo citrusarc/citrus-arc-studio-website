@@ -13,7 +13,7 @@ export default function HeroSection() {
             <span className="text-orange-600"> GROW BRANDS</span> <br />
           </h1>
           <p className="flex gap-2 items-center text-xl sm:text-2xl italic">
-            <FireFlame className="w-10 sm:w-8 h-10 sm:h-8 text-cyan-600" />4
+            <FireFlame className="w-10 sm:w-8 h-10 sm:h-8 text-cyan-600" />
             years of design-driven development
           </p>
         </div>
@@ -22,11 +22,11 @@ export default function HeroSection() {
             <Image fill src="/Images/dummy-image.jpg" alt="Overview Banner" />
             <Link href="/" className="absolute bottom-0 p-4 w-full">
               <button className="group flex p-2 w-full items-center justify-between rounded-full cursor-pointer border-2 text-white hover:text-orange-600 border-transparent hover:border-orange-600 bg-orange-600 hover:bg-white">
-                <span className="mx-auto animate-on-hover font-semibold">
+                <span className="mx-auto up-down-on-hover font-semibold">
                   GET IN TOUCH
                 </span>
                 <div className="p-2 rounded-full text-orange-600 group-hover:text-white bg-white group-hover:bg-orange-600">
-                  <EditPencil className="w-6 sm:w-8 h-6 sm:h-8" />
+                  <EditPencil className="w-6 sm:w-8 h-6 sm:h-8 right-left-on-hover" />
                 </div>
               </button>
             </Link>
