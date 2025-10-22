@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import CountUp from "@/components/ui/CountUp";
 
 const images = [
   {
@@ -32,14 +35,28 @@ const images = [
 export default function OverviewSection() {
   return (
     <section className="flex flex-col gap-16 sm:gap-24 px-4 py-24 sm:py-64 items-center text-center text-white">
-      <div className="flex flex-col gap-4 sm:gap-8">
-        <h2 className="text-6xl sm:text-[180px] font-bold">
-          DRIVE <span className="text-cyan-600">REAL</span> RESULTS
+      <div className="flex flex-col gap-4 sm:gap-8 items-center">
+        <h2 className="text-5xl sm:text-[180px] font-bold">
+          MORE THAN <br />
+          <CountUp
+            from={0}
+            to={10}
+            separator=","
+            direction="up"
+            duration={1}
+            className="count-up-text text-orange-200"
+          />
+          <span> CLIENTS</span>
         </h2>
-        <div>
-          <p>Our recent collaborations</p>
-        </div>
+        <p>
+          Built and designed over a dozen apps, tools, and digital products.
+        </p>
+        <p className="px-4 py-2 w-fit rounded-2xl text-orange-800 bg-orange-200/50">
+          Some clients partner with us for a month, many stay for a year or
+          more.
+        </p>
       </div>
+
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-6 w-full max-w-6xl">
         {images.map((item, index) => {
           const href = item.href || item.fallback || "#";
@@ -62,6 +79,7 @@ export default function OverviewSection() {
           );
         })}
       </div>
+      <p>and many more...</p>
     </section>
   );
 }
