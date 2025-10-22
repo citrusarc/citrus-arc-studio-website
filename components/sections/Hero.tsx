@@ -13,7 +13,7 @@ export default function HeroSection() {
             <span className="text-orange-600"> GROW BRANDS</span> <br />
           </h1>
           <p className="flex gap-2 items-center text-xl sm:text-2xl italic">
-            <FireFlame className="w-10 sm:w-8 h-10 sm:h-8 text-cyan-600" />
+            <FireFlame className="w-10 sm:w-8 h-10 sm:h-8 text-cyan-600" />4
             years of design-driven development
           </p>
         </div>
