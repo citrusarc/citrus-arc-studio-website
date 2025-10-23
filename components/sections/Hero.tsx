@@ -20,7 +20,7 @@ export default function HeroSection() {
         <div className="relative z-10 flex flex-col gap-4 w-full sm:w-auto max-w-xl">
           <div className="relative w-full sm:w-[560px] aspect-square rounded-2xl overflow-hidden">
             <Image fill src="/Images/dummy-image.jpg" alt="Overview Banner" />
-            <Link href="/" className="absolute bottom-0 p-4 w-full">
+            <Link href="/get-in-touch" className="absolute bottom-0 p-4 w-full">
               <button className="group flex p-2 w-full items-center justify-between rounded-full cursor-pointer border-2 text-white hover:text-orange-600 border-transparent hover:border-orange-600 bg-orange-600 hover:bg-white">
                 <span className="mx-auto up-down-on-hover font-semibold">
                   GET IN TOUCH
