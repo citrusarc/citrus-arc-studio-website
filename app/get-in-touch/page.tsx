@@ -124,7 +124,7 @@ export default function GetInTouchPage() {
             </li>
             <li className="flex items-center gap-4 text-xl sm:text-2xl">
               <CheckCircleSolid className="text-orange-500 w-7 h-7" />
-              <span>Number 3</span>
+              <span>Kickstart project.</span>
             </li>
           </ul>
         </div>
@@ -317,13 +317,22 @@ export default function GetInTouchPage() {
                               <SelectValue placeholder="Select your budget" />
                             </SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="1500" className="h-10">
+                              <SelectItem
+                                value="RM1,500 – RM4,999"
+                                className="h-10"
+                              >
                                 RM1,500 – RM4,999
                               </SelectItem>
-                              <SelectItem value="5000" className="h-10">
+                              <SelectItem
+                                value="RM5,000 – RM9,999"
+                                className="h-10"
+                              >
                                 RM5,000 – RM9,999
                               </SelectItem>
-                              <SelectItem value="10000" className="h-10">
+                              <SelectItem
+                                value="RM10,000 and above"
+                                className="h-10"
+                              >
                                 RM10,000 and above
                               </SelectItem>
                             </SelectContent>

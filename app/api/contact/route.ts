@@ -40,7 +40,7 @@ export async function POST(req: NextRequest) {
     const project = formData.get("project") as string;
     const file = formData.get("file") as File | null;
 
-    // ✅ Validate data
+    // Validate data
     formSchema.parse({
       fullName,
       email,
@@ -51,7 +51,6 @@ export async function POST(req: NextRequest) {
       fileName: file?.name,
     });
 
-    // ✅ Prepare attachments (use const, not let)
     const attachments = file
       ? [
           {
@@ -61,7 +60,7 @@ export async function POST(req: NextRequest) {
         ]
       : [];
 
-    // ✅ Send email
+    // Send email
     await transporter.sendMail({
       from: `"Your Company Name" <${process.env.EMAIL_USER}>`,
       to: process.env.ADMIN_EMAIL,
