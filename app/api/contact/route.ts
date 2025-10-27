@@ -37,8 +37,8 @@ export async function POST(req: NextRequest) {
     // Send email
     await transporter.sendMail({
       from: `"Your Company Name" <${process.env.EMAIL_USER}>`,
-      to: process.env.ADMIN_EMAIL, // Send to admin
-      cc: email, // Optionally CC the user
+      to: process.env.ADMIN_EMAIL,
+      cc: email,
       subject: "New Contact Form Submission",
       html: contactEmailTemplate({
         fullName,
@@ -59,7 +59,7 @@ export async function POST(req: NextRequest) {
     console.error("Form submission error:", err);
     const message =
       err instanceof z.ZodError
-        ? err.issues.map((e) => e.message).join(", ") // Use `issues` instead of `errors`
+        ? err.issues.map((e) => e.message).join(", ")
         : err instanceof Error
         ? err.message
         : "Failed to process form submission";
