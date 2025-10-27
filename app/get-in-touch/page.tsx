@@ -71,20 +71,20 @@ export default function GetInTouchPage() {
     setSuccessMessage(null);
 
     try {
-      const formData = {
-        fullName: values.fullName,
-        email: values.email,
-        phone: values.phone,
-        countryCode: values.countryCode,
-        budget: values.budget,
-        project: values.project,
-        fileName: values.file?.[0]?.name || undefined,
-      };
+      const formData = new FormData();
+      formData.append("fullName", values.fullName);
+      formData.append("email", values.email);
+      formData.append("phone", values.phone);
+      formData.append("countryCode", values.countryCode);
+      formData.append("budget", values.budget);
+      formData.append("project", values.project);
+      if (values.file?.[0]) {
+        formData.append("file", values.file[0]);
+      }
 
       const response = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: formData,
       });
 
       const data = await response.json();

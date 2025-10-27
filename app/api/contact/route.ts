@@ -28,11 +28,38 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    const body = await req.json();
-    const parsedData = formSchema.parse(body);
+    // Get form data
+    const formData = await req.formData();
 
-    const { fullName, email, phone, countryCode, budget, project, fileName } =
-      parsedData;
+    // Extract fields from formData
+    const fullName = formData.get("fullName") as string;
+    const email = formData.get("email") as string;
+    const phone = formData.get("phone") as string;
+    const countryCode = formData.get("countryCode") as string;
+    const budget = formData.get("budget") as string;
+    const project = formData.get("project") as string;
+    const file = formData.get("file") as File | null;
+
+    // Validate form data with Zod
+    const parsedData = formSchema.parse({
+      fullName,
+      email,
+      phone,
+      countryCode,
+      budget,
+      project,
+      fileName: file?.name,
+    });
+
+    // Prepare attachments
+    let attachments = [];
+    if (file) {
+      const bytes = await file.arrayBuffer();
+      attachments.push({
+        filename: file.name,
+        content: Buffer.from(bytes),
+      });
+    }
 
     // Send email
     await transporter.sendMail({
@@ -47,8 +74,9 @@ export async function POST(req: NextRequest) {
         countryCode,
         budget,
         project,
-        fileName,
+        fileName: file?.name,
       }),
+      attachments,
     });
 
     return NextResponse.json(
