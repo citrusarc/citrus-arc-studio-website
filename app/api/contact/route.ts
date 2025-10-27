@@ -31,7 +31,7 @@ export async function POST(req: NextRequest) {
     // Get form data
     const formData = await req.formData();
 
-    // Extract fields from formData
+    // Extract fields
     const fullName = formData.get("fullName") as string;
     const email = formData.get("email") as string;
     const phone = formData.get("phone") as string;
@@ -40,8 +40,8 @@ export async function POST(req: NextRequest) {
     const project = formData.get("project") as string;
     const file = formData.get("file") as File | null;
 
-    // Validate form data with Zod
-    const parsedData = formSchema.parse({
+    // ✅ Validate data
+    formSchema.parse({
       fullName,
       email,
       phone,
@@ -51,17 +51,17 @@ export async function POST(req: NextRequest) {
       fileName: file?.name,
     });
 
-    // Prepare attachments
-    let attachments = [];
-    if (file) {
-      const bytes = await file.arrayBuffer();
-      attachments.push({
-        filename: file.name,
-        content: Buffer.from(bytes),
-      });
-    }
+    // ✅ Prepare attachments (use const, not let)
+    const attachments = file
+      ? [
+          {
+            filename: file.name,
+            content: Buffer.from(await file.arrayBuffer()),
+          },
+        ]
+      : [];
 
-    // Send email
+    // ✅ Send email
     await transporter.sendMail({
       from: `"Your Company Name" <${process.env.EMAIL_USER}>`,
       to: process.env.ADMIN_EMAIL,

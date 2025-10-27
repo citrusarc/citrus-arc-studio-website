@@ -45,8 +45,8 @@ const formSchema = z.object({
 
 export default function GetInTouchPage() {
   const [submitting, setSubmitting] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [, setErrorMessage] = useState<string | null>(null);
+  const [, setSuccessMessage] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
