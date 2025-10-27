@@ -334,22 +334,44 @@ export default function GetInTouchPage() {
                 <FormField
                   control={form.control}
                   name="file"
-                  render={({ field }) => (
-                    <FormItem className="flex-1">
-                      <FormLabel className="text-neutral-400">
-                        Upload File (Optional)
-                      </FormLabel>
-                      <FormControl>
-                        <Input
-                          type="file"
-                          multiple
-                          onChange={(e) => field.onChange(e.target.files)}
-                          className="h-10 w-full -px-4 cursor-pointer border-transparent shadow-none text-neutral-400"
-                        />
-                      </FormControl>
-                      <FormMessage />
-                    </FormItem>
-                  )}
+                  render={({ field }) => {
+                    const file = field.value?.[0];
+                    return (
+                      <FormItem className="flex-1">
+                        <FormLabel className="text-neutral-400">
+                          Upload File (Optional)
+                        </FormLabel>
+                        <FormControl>
+                          {!file ? (
+                            <Input
+                              type="file"
+                              onChange={(e) => {
+                                const selectedFile = e.target.files?.[0];
+                                field.onChange(
+                                  selectedFile ? [selectedFile] : []
+                                );
+                              }}
+                              className="h-10 w-full sm:w-64 -px-4 cursor-pointer border-transparent shadow-none text-neutral-400"
+                            />
+                          ) : (
+                            <div className="flex h-10 items-center gap-2">
+                              <span className="truncate max-w-[200px] text-neutral-400 ">
+                                {file.name}
+                              </span>
+                              <button
+                                type="button"
+                                onClick={() => field.onChange([])}
+                                className="cursor-pointer text-sm text-red-500 hover:underline"
+                              >
+                                Remove
+                              </button>
+                            </div>
+                          )}
+                        </FormControl>
+                        <FormMessage />
+                      </FormItem>
+                    );
+                  }}
                 />
 
                 <Button
