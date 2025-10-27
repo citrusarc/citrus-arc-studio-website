@@ -22,3 +22,13 @@ export type FooterItem = {
   rel?: string;
   status?: ItemStatus;
 };
+
+export type ContactEmailTemplateProps = {
+  fullName: string;
+  email: string;
+  phone: string;
+  countryCode: string;
+  budget: string;
+  project: string;
+  fileName?: string;
+};

@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/form";
 import ReactCountryFlag from "react-country-flag";
 import { Rocket } from "iconoir-react";
+import { useState } from "react";
 
 const formSchema = z.object({
   fullName: z.string().min(2, "Full name is required"),
@@ -43,6 +44,10 @@ const formSchema = z.object({
 });
 
 export default function GetInTouchPage() {
+  const [submitting, setSubmitting] = useState(false);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -60,8 +65,43 @@ export default function GetInTouchPage() {
     formState: { errors },
   } = form;
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log("Form submitted:", values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setSubmitting(true);
+    setErrorMessage(null);
+    setSuccessMessage(null);
+
+    try {
+      const formData = {
+        fullName: values.fullName,
+        email: values.email,
+        phone: values.phone,
+        countryCode: values.countryCode,
+        budget: values.budget,
+        project: values.project,
+        fileName: values.file?.[0]?.name || undefined,
+      };
+
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit form");
+      }
+
+      setSuccessMessage("Your message has been sent successfully!");
+      form.reset();
+    } catch (err: unknown) {
+      const message =
+        err instanceof Error ? err.message : "Error submitting form";
+      setErrorMessage(message);
+    } finally {
+      setSubmitting(false);
+    }
   }
 
   return (
@@ -345,11 +385,10 @@ export default function GetInTouchPage() {
                           {!file ? (
                             <Input
                               type="file"
+                              accept="application/pdf"
                               onChange={(e) => {
-                                const selectedFile = e.target.files?.[0];
-                                field.onChange(
-                                  selectedFile ? [selectedFile] : []
-                                );
+                                const fileList = e.target.files;
+                                field.onChange(fileList);
                               }}
                               className="h-10 w-full sm:w-64 -px-4 cursor-pointer border-transparent shadow-none text-neutral-400"
                             />
@@ -360,7 +399,7 @@ export default function GetInTouchPage() {
                               </span>
                               <button
                                 type="button"
-                                onClick={() => field.onChange([])}
+                                onClick={() => field.onChange(null)}
                                 className="cursor-pointer text-sm text-red-500 hover:underline"
                               >
                                 Remove
@@ -376,10 +415,13 @@ export default function GetInTouchPage() {
 
                 <Button
                   type="submit"
-                  className="group flex p-2 items-center justify-center h-16 w-full sm:w-64 rounded-full cursor-pointer border text-white hover:text-orange-600 border-transparent hover:border-orange-600 bg-orange-600 hover:bg-white"
+                  disabled={submitting}
+                  className={`group flex p-2 items-center justify-center h-16 w-full sm:w-64 rounded-full cursor-pointer border text-white hover:text-orange-600 border-transparent hover:border-orange-600 bg-orange-600 hover:bg-white ${
+                    submitting ? "opacity-50 cursor-not-allowed" : ""
+                  }`}
                 >
                   <span className="mx-auto up-down-on-hover text-base font-semibold">
-                    SUBMIT
+                    {submitting ? "SENDING..." : "SEND A MESSAGE"}
                   </span>
                   <div className="flex items-center justify-center w-12 h-12 rounded-full text-orange-600 group-hover:text-white bg-white group-hover:bg-orange-600">
                     <Rocket className="!w-6 !sm:w-12 !h-6 !sm:h-12 up-down-on-hover transform rotate-90" />
