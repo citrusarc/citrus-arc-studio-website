@@ -41,38 +41,37 @@ export function contactEmailTemplate({
         "> 
 
         <!-- Individual field -->
-        <div style="display:flex; flex-direction:column; gap:4px;"> 
-          <p style="font-size:14px; color:#a3a3a3; margin:0;">Full Name</p> 
-          <p style="font-size:16px; margin:0;">${fullName}</p>
-        </div>
-
-        <div style="display:flex; flex-direction:column; gap:4px;">
-          <p style="font-size:14px; color:#a3a3a3; margin:0;">Email</p>
-          <p style="font-size:16px; margin:0;">${email}</p>
-        </div>
-
-        <div style="display:flex; flex-direction:column; gap:4px;">
-          <p style="font-size:14px; color:#a3a3a3; margin:0;">Phone Number</p>
-          <p style="font-size:16px; margin:0;">${countryCode}${phone}</p>
-        </div>
-
-        <div style="display:flex; flex-direction:column; gap:4px;">
-          <p style="font-size:14px; color:#a3a3a3; margin:0;">Budget</p>
-          <p style="font-size:16px; margin:0;">${budget}</p>
-        </div>
-
-        <div style="display:flex; flex-direction:column; gap:4px;">
-          <p style="font-size:14px; color:#a3a3a3; margin:0;">Describe Your Project</p>
-          <p style="font-size:16px; margin:0;">${project}</p>
-        </div>
-      </div>
+       <table style="width:100%; border-collapse:collapse; font-size:14px;">
+  <tbody>
+    <tr >
+      <td style="padding:8px; color:#a3a3a3; width:35%;">Full Name</td>
+      <td style="padding:8px; color:#ffffff; font-size:16px; font-weight:500;">${fullName}</td>
+    </tr>
+    <tr >
+      <td style="padding:8px; color:#a3a3a3;">Email</td>
+      <td style="padding:8px; color:#ffffff; font-size:16px; font-weight:500;">${email}</td>
+    </tr>
+    <tr >
+      <td style="padding:8px; color:#a3a3a3;">Phone Number</td>
+      <td style="padding:8px; color:#ffffff; font-size:16px; font-weight:500;">${countryCode}${phone}</td>
+    </tr>
+    <tr >
+      <td style="padding:8px; color:#a3a3a3;">Budget</td>
+      <td style="padding:8px; color:#ffffff; font-size:16px; font-weight:500;">${budget}</td>
+    </tr>
+    <tr >
+      <td style="padding:8px; color:#a3a3a3; vertical-align:top;">Describe Your Project</td>
+      <td style="padding:8px; color:#ffffff; font-size:16px; font-weight:500;">${project}</td>
+    </tr>
+  </tbody>
+</table>
 
     </div>
 
     <!-- Footer -->
     <div style="color:#a3a3a3; text-align:center; padding:20px; font-size:14px;">
         <p style="margin:4px 0;">
-        <a href="https://citrusarc.studio" style="color:#a3a3a3;">citrusarc.com</a>
+        <a href="https://citrusarc.studio" style="color:#a3a3a3;">citrusarc.studio</a>
       </p>
       <p style="margin:4px 0;">© ${new Date().getFullYear()} Citrus Arc Studio. All rights reserved.</p>
       

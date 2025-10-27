@@ -62,10 +62,10 @@ export async function POST(req: NextRequest) {
 
     // Send email
     await transporter.sendMail({
-      from: `"Your Company Name" <${process.env.EMAIL_USER}>`,
-      to: process.env.ADMIN_EMAIL,
-      cc: email,
-      subject: "New Contact Form Submission",
+      from: `"Citrus Arc Studio" <${process.env.EMAIL_USER}>`,
+      to: email,
+      bcc: process.env.ADMIN_EMAIL,
+      subject: "Your project inquiry is on its way to our team",
       html: contactEmailTemplate({
         fullName,
         email,
