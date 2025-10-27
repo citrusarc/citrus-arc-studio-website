@@ -23,6 +23,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import ReactCountryFlag from "react-country-flag";
 import { Rocket } from "iconoir-react";
 
 const formSchema = z.object({
@@ -31,8 +32,14 @@ const formSchema = z.object({
   phone: z.string().min(6, "Enter valid phone number"),
   countryCode: z.string().min(1, "Select country code"),
   budget: z.string().min(1, "Select your budget"),
-  project: z.string().max(120, "Max 120 characters"),
-  file: z.any().refine((file) => file instanceof FileList),
+  project: z
+    .string()
+    .min(10, "Describe your project")
+    .max(300, "Max 300 characters"),
+  file: z
+    .any()
+    .optional()
+    .refine((file) => !file || file instanceof FileList, "Invalid file input"),
 });
 
 export default function GetInTouchPage() {
@@ -42,12 +49,16 @@ export default function GetInTouchPage() {
       fullName: "",
       email: "",
       phone: "",
-      countryCode: "",
+      countryCode: "+60",
       budget: "",
       project: "",
       file: undefined,
     },
   });
+
+  const {
+    formState: { errors },
+  } = form;
 
   function onSubmit(values: z.infer<typeof formSchema>) {
     console.log("Form submitted:", values);
@@ -79,7 +90,7 @@ export default function GetInTouchPage() {
         </div>
 
         <div className="relative z-10 flex flex-col w-full max-w-6xl">
-          <div className="relative p-6 w-full rounded-2xl overflow-hidden text-black bg-white">
+          <div className="relative p-4 sm:p-8 w-full rounded-2xl overflow-hidden text-black bg-white">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -91,14 +102,24 @@ export default function GetInTouchPage() {
                     name="fullName"
                     render={({ field }) => (
                       <FormItem className="flex-1">
-                        <FormLabel className="text-neutral-400">
+                        <FormLabel
+                          className={`${
+                            errors.fullName
+                              ? "text-red-500"
+                              : "text-neutral-400"
+                          }`}
+                        >
                           Full Name
                         </FormLabel>
                         <FormControl>
                           <Input
                             placeholder="John Doe"
                             {...field}
-                            className="w-full h-10 shadow-none"
+                            className={`w-full h-10 shadow-none ${
+                              errors.fullName
+                                ? "border-red-500 focus-visible:ring-red-500"
+                                : ""
+                            }`}
                           />
                         </FormControl>
                         <FormMessage />
@@ -111,7 +132,11 @@ export default function GetInTouchPage() {
                     name="email"
                     render={({ field }) => (
                       <FormItem className="flex-1">
-                        <FormLabel className="text-neutral-400">
+                        <FormLabel
+                          className={`${
+                            errors.email ? "text-red-500" : "text-neutral-400"
+                          }`}
+                        >
                           Email
                         </FormLabel>
                         <FormControl>
@@ -119,7 +144,11 @@ export default function GetInTouchPage() {
                             type="email"
                             placeholder="example@email.com"
                             {...field}
-                            className="w-full h-10 shadow-none"
+                            className={`w-full h-10 shadow-none ${
+                              errors.email
+                                ? "border-red-500 focus-visible:ring-red-500"
+                                : ""
+                            }`}
                           />
                         </FormControl>
                         <FormMessage />
@@ -130,7 +159,13 @@ export default function GetInTouchPage() {
 
                 <div className="flex flex-col sm:flex-row gap-4 sm:gap-8 w-full">
                   <div className="space-y-1 flex-1">
-                    <h2 className="text-sm font-medium text-neutral-400">
+                    <h2
+                      className={`text-sm font-medium ${
+                        errors.phone || errors.countryCode
+                          ? "text-red-500"
+                          : "text-neutral-400"
+                      }`}
+                    >
                       Phone Number
                     </h2>
                     <div className="flex w-full gap-2">
@@ -141,19 +176,49 @@ export default function GetInTouchPage() {
                           <FormItem>
                             <FormControl>
                               <Select
+                                defaultValue="+60"
                                 onValueChange={field.onChange}
                                 value={field.value}
                               >
-                                <SelectTrigger className="!h-10 shadow-none">
-                                  <SelectValue placeholder="+60" />
+                                <SelectTrigger
+                                  className={`!h-10 shadow-none ${
+                                    errors.countryCode
+                                      ? "border-red-500 focus-visible:ring-red-500"
+                                      : ""
+                                  }`}
+                                >
+                                  <SelectValue placeholder="+60">
+                                    {field.value}
+                                  </SelectValue>
                                 </SelectTrigger>
-                                <SelectContent>
-                                  <SelectItem value="+60">+60 (MY)</SelectItem>
-                                  <SelectItem value="+65">+65 (SG)</SelectItem>
+                                <SelectContent align="start">
+                                  <SelectItem value="+60" className="h-10">
+                                    <ReactCountryFlag
+                                      countryCode="MY"
+                                      svg
+                                      style={{ width: "20px", height: "20px" }}
+                                    />
+                                    <span>Malaysia (+60)</span>
+                                  </SelectItem>
+                                  <SelectItem value="+62" className="h-10">
+                                    <ReactCountryFlag
+                                      countryCode="ID"
+                                      svg
+                                      style={{ width: "20px", height: "20px" }}
+                                    />
+                                    <span>Indonesia (+62)</span>
+                                  </SelectItem>
+                                  <SelectItem value="+65" className="h-10">
+                                    <ReactCountryFlag
+                                      countryCode="SG"
+                                      svg
+                                      style={{ width: "20px", height: "20px" }}
+                                    />
+                                    <span>Singapore (+65)</span>
+                                  </SelectItem>
                                 </SelectContent>
                               </Select>
                             </FormControl>
-                            <FormMessage />
                           </FormItem>
                         )}
                       />
@@ -167,14 +232,22 @@ export default function GetInTouchPage() {
                               <Input
                                 placeholder="123456789"
                                 {...field}
-                                className=" w-full h-10 shadow-none"
+                                className={`w-full h-10 shadow-none ${
+                                  errors.phone
+                                    ? "border-red-500 focus-visible:ring-red-500"
+                                    : ""
+                                }`}
                               />
                             </FormControl>
-                            <FormMessage />
                           </FormItem>
                         )}
                       />
                     </div>
+                    {(errors.phone || errors.countryCode) && (
+                      <p className="text-sm text-red-500 mt-2">
+                        {errors.phone?.message || errors.countryCode?.message}
+                      </p>
+                    )}
                   </div>
 
                   <FormField
@@ -182,7 +255,11 @@ export default function GetInTouchPage() {
                     name="budget"
                     render={({ field }) => (
                       <FormItem className="flex-1">
-                        <FormLabel className="text-neutral-400">
+                        <FormLabel
+                          className={`${
+                            errors.budget ? "text-red-500" : "text-neutral-400"
+                          }`}
+                        >
                           Budget
                         </FormLabel>
                         <FormControl>
@@ -190,18 +267,24 @@ export default function GetInTouchPage() {
                             onValueChange={field.onChange}
                             value={field.value}
                           >
-                            <SelectTrigger className="w-full !h-10 shadow-none">
+                            <SelectTrigger
+                              className={`w-full !h-10 shadow-none ${
+                                errors.budget
+                                  ? "border-red-500 focus-visible:ring-red-500"
+                                  : ""
+                              }`}
+                            >
                               <SelectValue placeholder="Select your budget" />
                             </SelectTrigger>
                             <SelectContent>
                               <SelectItem value="1500" className="h-10">
-                                RM1,500
+                                RM1,500 – RM4,999
                               </SelectItem>
                               <SelectItem value="5000" className="h-10">
-                                RM5,000
+                                RM5,000 – RM9,999
                               </SelectItem>
                               <SelectItem value="10000" className="h-10">
-                                RM10,000+
+                                RM10,000 and above
                               </SelectItem>
                             </SelectContent>
                           </Select>
@@ -217,21 +300,33 @@ export default function GetInTouchPage() {
                   name="project"
                   render={({ field }) => (
                     <FormItem>
-                      <FormLabel className="text-neutral-400">
+                      <FormLabel
+                        className={`${
+                          errors.project ? "text-red-500" : "text-neutral-400"
+                        }`}
+                      >
                         Describe Your Project
                       </FormLabel>
                       <FormControl>
                         <Textarea
                           placeholder="Write about your project here..."
                           {...field}
-                          maxLength={120}
-                          className="h-36 shadow-none"
+                          maxLength={300}
+                          className={`h-36 shadow-none ${
+                            errors.project
+                              ? "border-red-500 focus-visible:ring-red-500"
+                              : ""
+                          }`}
                         />
                       </FormControl>
-                      <FormDescription>
-                        Remaining: {120 - field.value.length}
-                      </FormDescription>
-                      <FormMessage />
+                      <div className="flex items-center justify-between">
+                        <div className="text-start">
+                          <FormMessage />
+                        </div>
+                        <FormDescription className="text-end">
+                          Remaining: {300 - field.value.length}
+                        </FormDescription>
+                      </div>
                     </FormItem>
                   )}
                 />
@@ -249,7 +344,7 @@ export default function GetInTouchPage() {
                           type="file"
                           multiple
                           onChange={(e) => field.onChange(e.target.files)}
-                          className="h-10 w-full sm:w-64 -px-4 cursor-pointer border-transparent shadow-none text-neutral-400"
+                          className="h-10 w-full -px-4 cursor-pointer border-transparent shadow-none text-neutral-400"
                         />
                       </FormControl>
                       <FormMessage />
