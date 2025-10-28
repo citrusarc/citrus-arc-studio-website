@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Citrus Arc Studio;;;;
+FN:Citrus Arc Studio
+ORG:Citrus Arc Studio
+TITLE:Creative Studio
+TEL;TYPE=work,voice:+601159956435
+EMAIL;TYPE=work:citrusarc.studio@gmail.com
+URL;TYPE=work:https://citrusarc.studio
+ADR;TYPE=work:;;Kuala Lumpur;;;Malaysia
+PHOTO;VALUE=URI:https://citrusarc.studio/logo.png
+NOTE:Design | Branding | Digital | Motion
+END:VCARD
