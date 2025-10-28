@@ -1,6 +1,8 @@
 "use client";
 
+import ReactDOM from "react-dom";
 import React, { useEffect } from "react";
+
 import { ModalProps } from "@/types";
 
 export function SuccessModal({
@@ -25,10 +27,10 @@ export function SuccessModal({
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
-  return (
+  return ReactDOM.createPortal(
     <div
       onClick={onClose}
-      className="flex fixed inset-0 z-50 p-4 items-center justify-center"
+      className="flex fixed inset-0 z-[9999] p-4 items-center justify-center"
     >
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
       <div
@@ -46,7 +48,8 @@ export function SuccessModal({
           {CTA}
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
 
@@ -72,10 +75,10 @@ export function ErrorModal({
   }, [isOpen, onClose]);
 
   if (!isOpen) return null;
-  return (
+  return ReactDOM.createPortal(
     <div
       onClick={onClose}
-      className="flex fixed inset-0 z-50 p-4 items-center justify-center"
+      className="flex fixed inset-0 z-[9999] p-4 items-center justify-center"
     >
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" />
       <div
@@ -93,6 +96,7 @@ export function ErrorModal({
           {CTA}
         </button>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 }
