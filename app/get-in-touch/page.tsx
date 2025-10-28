@@ -27,6 +27,8 @@ import ReactCountryFlag from "react-country-flag";
 import { Rocket } from "iconoir-react";
 import { useState } from "react";
 
+import { SuccessModal, ErrorModal } from "@/components/ui/Modal";
+
 const formSchema = z.object({
   fullName: z.string().min(2, "Full name is required"),
   email: z.string().email("Invalid email address"),
@@ -45,8 +47,8 @@ const formSchema = z.object({
 
 export default function GetInTouchPage() {
   const [submitting, setSubmitting] = useState(false);
-  const [, setErrorMessage] = useState<string | null>(null);
-  const [, setSuccessMessage] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -130,7 +132,7 @@ export default function GetInTouchPage() {
         </div>
 
         <div className="relative z-10 flex flex-col w-full max-w-6xl">
-          <div className="relative p-4 sm:p-8 w-full rounded-2xl overflow-hidden text-black bg-white">
+          <div className="relative p-4 sm:p-8 w-full rounded-2xl overflow-hidden text-neutral-600 bg-white">
             <Form {...form}>
               <form
                 onSubmit={form.handleSubmit(onSubmit)}
@@ -441,6 +443,21 @@ export default function GetInTouchPage() {
           </div>
         </div>
       </div>
+
+      <SuccessModal
+        title="Your message has been sent!"
+        message="We’ve received your inquiry and our team will be in touch soon. You may check your inbox for confirmation."
+        CTA="Sounds Good"
+        isOpen={!!successMessage}
+        onClose={() => setSuccessMessage(null)}
+      />
+      <ErrorModal
+        title="We couldn’t send your message!"
+        message="Something went wrong while submitting your inquiry. Please try again in a moment."
+        CTA="Got It"
+        isOpen={!!errorMessage}
+        onClose={() => setErrorMessage(null)}
+      />
     </section>
   );
 }
