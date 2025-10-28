@@ -1,10 +1,34 @@
+"use client";
+
 import Link from "next/link";
+import { useState, useEffect } from "react";
 import { SendMailSolid, WhatsappSolid } from "iconoir-react";
 
 export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <nav className="sticky top-0 z-50 flex px-6 sm:px-12 py-8 sm:py-16 items-center justify-center">
-      <div className="flex p-4 w-full items-center justify-between rounded-full backdrop-blur-md text-white sm:text-orange-600 border border-white/20 bg-white/20 sm:rounded-none sm:backdrop-blur-none sm:border-none sm:bg-transparent">
+      <div
+        className={`flex p-4 w-full items-center justify-between rounded-full border transition-all duration-200 ${
+          isScrolled
+            ? "backdrop-blur-md text-white border-white/20 bg-white/20"
+            : "text-orange-600 border-transparent bg-transparent"
+        }`}
+      >
         <Link href="/">LOGO</Link>
         <div className="flex">
           <a
