@@ -31,7 +31,7 @@ export default function Navbar() {
       >
         <Link href="/">LOGO</Link>
         <div className="flex">
-          <a
+          {/* <a
             href="https://wassap.my/601159956435"
             className="group flex items-center gap-2 px-4 py-2 rounded-full hover:text-white hover:bg-orange-600 transition-all"
           >
@@ -39,7 +39,7 @@ export default function Navbar() {
             <span className="hidden group-hover:inline max-w-0 group-hover:max-w-xs opacity-0 group-hover:opacity-100 transition-all duration-400 ease-out">
               Whatsapp Us
             </span>
-          </a>
+          </a> */}
           <a
             href="mailto:citrusarc.studio@gmail.com"
             className="group flex items-center gap-2 px-4 py-2 rounded-full hover:text-white hover:bg-orange-600 transition-all"
