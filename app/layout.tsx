@@ -21,7 +21,7 @@ export default function RootLayout({
         <main className="w-full max-w-full">{children}</main>
         <footer className="flex flex-col py-8 sm:py-0 w-full items-center justify-center text-center text-orange-600">
           <div className="flex flex-col sm:flex-row sm:px-10 w-full items-center justify-between order-2 sm:order-1 text-white/50">
-            <p>© CITRUS ARC STUDIO</p>
+            <p>© {new Date().getFullYear()} CITRUS ARC STUDIO</p>
             <p>202503267271 (003780123-A)</p>
           </div>
           <ScrollToTop href="/" className="order-1 sm:order-2">
