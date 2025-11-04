@@ -51,7 +51,7 @@ export default function OverviewSection() {
         <p>
           Built and designed over a dozen apps, tools, and digital products.
         </p>
-        <p className="px-4 py-2 w-fit rounded-2xl text-orange-800 bg-orange-200/50">
+        <p className="px-4 py-2 w-fit rounded-full text-orange-800 bg-orange-200/50">
           Some clients partner with us for a month, many stay for a year or
           more.
         </p>
@@ -66,14 +66,14 @@ export default function OverviewSection() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="relative flex w-full h-32 sm:h-40 items-center justify-center rounded-xl bg-white/10"
+              className="group relative flex w-full h-32 sm:h-40 items-center justify-center rounded-2xl sm:rounded-4xl backdrop-blur-md border border-white/30 bg-white/10"
             >
               <Image
                 src={item.src}
                 alt={item.alt}
                 width={160}
                 height={80}
-                className="object-contain opacity-60 hover:opacity-100 transition-opacity duration-100"
+                className="object-contain opacity-60 group-hover:opacity-100 transition-opacity duration-100"
               />
             </Link>
           );

@@ -32,8 +32,8 @@ import { SuccessModal, ErrorModal } from "@/components/ui/Modal";
 const formSchema = z.object({
   fullName: z.string().min(2, "Full name is required"),
   email: z.string().email("Invalid email address"),
-  phone: z.string().min(6, "Enter valid phone number"),
   countryCode: z.string().min(1, "Select country code"),
+  phone: z.string().min(6, "Enter valid phone number"),
   budget: z.string().min(1, "Select your budget"),
   project: z
     .string()
@@ -286,7 +286,7 @@ export default function GetInTouchPage() {
                       />
                     </div>
                     {(errors.phone || errors.countryCode) && (
-                      <p className="text-sm text-red-500 mt-2">
+                      <p className="mt-2 text-sm text-red-500">
                         {errors.phone?.message || errors.countryCode?.message}
                       </p>
                     )}

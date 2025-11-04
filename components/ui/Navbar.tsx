@@ -25,7 +25,7 @@ export default function Navbar() {
       <div
         className={`flex p-4 w-full items-center justify-between rounded-full border transition-all duration-200 ${
           isScrolled
-            ? "backdrop-blur-md text-white border-white/20 bg-white/20"
+            ? "backdrop-blur-md shadow-xl text-white border-white/30 bg-white/10"
             : "text-orange-600 border-transparent bg-transparent"
         }`}
       >

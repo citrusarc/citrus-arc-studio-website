@@ -36,8 +36,8 @@ export type ContactEmailTemplateProps = {
 export type ModalProps = {
   title?: string;
   message?: string;
+  href?: string;
   CTA?: string;
-  redirectUrl?: string;
   isOpen: boolean;
   onClose: () => void;
 };
