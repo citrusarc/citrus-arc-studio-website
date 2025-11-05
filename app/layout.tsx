@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="relative antialiased overflow-x-hidden overflow-y-auto max-w-full bg-gradient-to-br from-orange-950 to-orange-600">
+      <body className="relative antialiased overflow-x-hidden overflow-y-auto max-w-full bg-gradient-to-br from-orange-950 via-orange-900 to-orange-700">
         <Navbar />
         <main className="w-full max-w-full">{children}</main>
         <footer className="flex flex-col py-8 sm:py-0 w-full items-center justify-center text-center text-orange-600">
