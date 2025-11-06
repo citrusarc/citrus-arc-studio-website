@@ -4,6 +4,8 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { SendMailSolid, WhatsappSolid } from "iconoir-react";
 
+import BrandLogo from "../icons/BrandLogo";
+
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
 
@@ -29,7 +31,9 @@ export default function Navbar() {
             : "text-orange-600 border-transparent bg-transparent"
         }`}
       >
-        <Link href="/">LOGO</Link>
+        <Link href="/" className="cursor-pointer">
+          <BrandLogo className="w-11 h-7" isScrolled={isScrolled} />
+        </Link>
         <div className="flex">
           {/* <a
             href="https://wassap.my/601159956435"
