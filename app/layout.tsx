@@ -182,7 +182,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className="relative antialiased overflow-x-hidden overflow-y-auto max-w-full bg-gradient-to-br from-orange-950 via-orange-900 to-orange-700"
+        className="relative antialiased overflow-x-hidden overflow-y-auto max-w-full bg-linear-to-br from-orange-950 via-orange-900 to-orange-700"
       >
         <Navbar />
         <main className="w-full max-w-full">{children}</main>
