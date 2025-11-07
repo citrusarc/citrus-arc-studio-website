@@ -89,6 +89,7 @@ export default function RootLayout({
     <html lang="en">
       <head>
         <Script
+          async
           src="https://www.googletagmanager.com/gtag/js?id=G-KMB66XBXLG"
           strategy="afterInteractive"
         />
@@ -102,7 +103,9 @@ export default function RootLayout({
           `}
         </Script>
         <Script
+          id="ld-json-org" // // unique ID for clarity
           type="application/ld+json"
+          strategy="afterInteractive" // // ensures it loads after hydration
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
@@ -177,7 +180,10 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className="relative antialiased overflow-x-hidden overflow-y-auto max-w-full bg-gradient-to-br from-orange-950 via-orange-900 to-orange-700">
+      <body
+        suppressHydrationWarning
+        className="relative antialiased overflow-x-hidden overflow-y-auto max-w-full bg-gradient-to-br from-orange-950 via-orange-900 to-orange-700"
+      >
         <Navbar />
         <main className="w-full max-w-full">{children}</main>
         <footer className="flex flex-col py-8 sm:py-0 w-full items-center justify-center text-center text-orange-600">
