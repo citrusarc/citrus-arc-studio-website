@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import { FireFlame, EditPencil } from "iconoir-react";
 
 export default function HeroSection() {
@@ -25,7 +24,6 @@ export default function HeroSection() {
                 type="video/mp4"
               />
             </video>
-            {/* <Image fill src="/Images/hero-banner.png" alt="Overview Banner" /> */}
             <Link href="/get-in-touch" className="absolute bottom-0 p-4 w-full">
               <button className="group flex p-2 w-full items-center justify-between rounded-full cursor-pointer border text-white hover:text-orange-600 border-transparent hover:border-orange-600 bg-orange-600 hover:bg-white">
                 <span className="mx-auto up-down-on-hover font-semibold">
