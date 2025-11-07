@@ -21,7 +21,7 @@ export default function HeroSection() {
           <div className="relative w-full sm:w-[560px] aspect-square rounded-2xl overflow-hidden bg-white/30">
             <video autoPlay muted loop playsInline>
               <source
-                src="https://pub-9ac74aa36be94bba832c2203f8f0f685.r2.dev/promo-video.mp4"
+                src="https://pub-bad26a1c69fc4c22aa91d87ef3001214.r2.dev/media/promo-video.mp4"
                 type="video/mp4"
               />
             </video>
