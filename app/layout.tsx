@@ -103,9 +103,9 @@ export default function RootLayout({
           `}
         </Script>
         <Script
-          id="ld-json-org" // // unique ID for clarity
+          id="ld-json-org"
           type="application/ld+json"
-          strategy="afterInteractive" // // ensures it loads after hydration
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
