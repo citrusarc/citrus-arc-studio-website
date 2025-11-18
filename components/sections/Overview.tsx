@@ -13,7 +13,7 @@ const images = [
   },
   {
     src: "/Images/client-logo-2.png",
-    alt: "Client Logo 21",
+    alt: "Client Logo 2",
     href: "https://www.nujumcafe.com/",
     fallback: "https://nujum-cafe-website.vercel.app/",
   },
