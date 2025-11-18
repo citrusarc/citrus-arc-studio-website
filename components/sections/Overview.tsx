@@ -22,7 +22,7 @@ const images = [
     alt: "Client Logo 3",
     href: "https://www.goldcoastmoribresort.com/",
     fallback:
-      "https://goldcoastmorib-international-resort-booking-site-v2.vercel.app/",
+      "https://goldcoastmorib-international-resort-booking-site-v3.vercel.app/",
   },
   {
     src: "/Images/client-logo-4.png",
